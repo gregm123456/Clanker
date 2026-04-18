@@ -1,0 +1,33 @@
+[submodule "references/hardware_exercises"]
+	path = references/hardware_exercises
+	url = https://github.com/gregm123456/hardware_exercises
+[submodule "references/sd1.5-lcm.axera"]
+	path = references/sd1.5-lcm.axera
+	url = https://github.com/gregm123456/sd1.5-lcm.axera
+[submodule "references/raspberry_pi_hailo_ai_services"]
+	path = references/raspberry_pi_hailo_ai_services
+	url = https://github.com/gregm123456/raspberry_pi_hailo_ai_services
+[submodule "references/ollama_gateway"]
+	path = references/ollama_gateway
+	url = https://github.com/gregm123456/ollama_gateway
+[submodule "references/pi_axera_sd_interactive"]
+	path = references/pi_axera_sd_interactive
+	url = https://github.com/gregm123456/pi_axera_sd_interactive
+[submodule "references/ax650_raspberry_pi_services"]
+	path = references/ax650_raspberry_pi_services
+	url = https://github.com/gregm123456/ax650_raspberry_pi_services
+[submodule "references/axcl-docs"]
+	path = references/axcl-docs
+	url = https://github.com/gregm123456/axcl-docs
+[submodule "references/ax-llm"]
+	path = references/ax-llm
+	url = https://github.com/gregm123456/ax-llm
+[submodule "references/IT8951"]
+	path = references/IT8951
+	url = https://github.com/GregDMeyer/IT8951
+[submodule "references/notyou"]
+	path = references/notyou
+	url = https://github.com/gregm123456/notyou
+[submodule "references/axcl-samples"]
+	path = references/axcl-samples
+	url = https://github.com/gregm123456/axcl-samples
