@@ -18,6 +18,8 @@ This is for **new, Clanker-owned** services — not for importing external refer
 - Enforce node-appropriate scaffolding: do not add heavy dependencies (numpy, torch, large ML libs) to services targeting Zero 2W.
 - Never commit secrets, tokens, or device-specific credentials. Put them in `.env` (gitignored) and document the provisioning step.
 - The README and any systemd unit must explicitly state the node target.
+- Treat the service README as the primary fresh-device deployment document. Required OS packages, drivers, interface toggles, group membership, env setup, service install steps, and validation commands must live there when relevant.
+- On Pi targets, use a project-local `.venv` by default and ensure install/run/systemd commands use that interpreter.
 - Use the `gh` CLI for GitHub repo creation. If `gh` is not authenticated, stop and report the issue before proceeding.
 
 # Intake Questions
@@ -31,17 +33,19 @@ Ask the user before starting if any of these are not already known:
 5. **Needs systemd unit?** — yes or no.
 6. **Offline-capable?** — can the service run without internet or Tailscale?
 7. **Repo visibility** — private (default) or public?
+8. **Fresh-device prerequisites** — what must be installed or configured on a brand-new target device before the service can run?
 
 # Suggested Procedure
 
 1. Confirm all intake questions are answered.
 2. Create the GitHub repository using `gh repo create`.
 3. Scaffold the local service directory:
-   - `README.md` (with node target, purpose, setup, update path)
+   - `README.md` (with node target, purpose, fresh-device provisioning, setup, update path, validation)
    - `.gitignore` (Python standard + `.env`)
    - `requirements.txt` (empty or minimal)
    - `main.py` (entry point placeholder)
    - `deploy/<service-name>.service` if systemd is requested
+   - include `.venv` setup/activation in README commands and venv Python path in systemd ExecStart
 4. Initialize git, make initial commit, push to GitHub.
 5. From the Clanker root, add the new repo as a submodule under `services/<service-name>`.
 6. Commit the `.gitmodules` and `services/<service-name>` entry in Clanker root.
@@ -67,4 +71,5 @@ Ask the user before starting if any of these are not already known:
 - List all files added to the service repo.
 - Report the submodule path in Clanker (e.g., `services/<service-name>`).
 - Note any operator follow-up: device provisioning, secret setup, submodule init/update after pulling Clanker.
+- Call out whether the service README now fully covers fresh-device provisioning and validation, and list any intentional gaps.
 - If anything fails (e.g., `gh` not authenticated, name conflict), report the exact error and stop rather than guessing.

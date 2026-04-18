@@ -56,6 +56,8 @@ Before proceeding, confirm the following with the user.
 - Never mix heavy Pi 5 dependencies into a service that will run on a Zero 2W.
 - Keep secrets, tokens, and device-specific credentials out of the repository. Direct them into `.env` files covered by `.gitignore`, or document a provisioning step.
 - The systemd unit description and README must name the node target explicitly.
+- Treat the service README as the primary fresh-device deployment document. If the service needs OS packages, drivers, interface toggles like SPI/I2C/Camera, systemd setup, udev/group membership, or validation commands, include them there.
+- On Raspberry Pi targets, default to a project-local `.venv` and document all install/run/service commands against that venv.
 
 ## Intake Checklist
 
@@ -66,6 +68,7 @@ Before proceeding, confirm the following with the user.
 5. Confirm whether a systemd unit is needed.
 6. Confirm offline-capable or internet-dependent.
 7. Confirm update path (default: `git pull` inside submodule).
+8. Confirm what a fresh device must have configured before the service can run (OS packages, drivers, interfaces, permissions, secrets, validation steps).
 
 ## Command Templates
 
@@ -104,15 +107,32 @@ cat > README.md << 'EOF'
 
 <One or two sentences describing what this service does.>
 
+## Provisioning (first time on a new device)
+
+Document the complete bring-up path here:
+
+- Required apt/system packages
+- Required Python packages
+- Required drivers or vendor libraries
+- Required interface toggles (SPI, I2C, camera, UART, etc.)
+- Required group membership, udev rules, or permissions
+- Required env file creation and machine-local settings
+- Required service installation steps
+- Validation or smoke-test commands
+
 ## Setup
 
 ```bash
-pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
 ## Running
 
 ```bash
+source .venv/bin/activate
 python main.py
 ```
 
@@ -225,7 +245,7 @@ After=network.target
 Type=simple
 User=pi
 WorkingDirectory=/home/pi/<service-name>
-ExecStart=/usr/bin/python3 /home/pi/<service-name>/main.py
+ExecStart=/home/pi/<service-name>/.venv/bin/python /home/pi/<service-name>/main.py
 Restart=on-failure
 RestartSec=5
 
@@ -268,4 +288,6 @@ Add this to `services/README.md` (or create it if it does not exist).
 - Submodule entry added to `.gitmodules` and committed in Clanker root.
 - `services/README.md` entry created or updated.
 - systemd unit file included in service repo if applicable.
+- Service README documents fresh-device provisioning requirements and validation steps, not just runtime commands.
+- Service README and systemd example use a project-local `.venv` on Pi targets.
 - Any operator follow-up noted (device provisioning, secret setup, submodule init).

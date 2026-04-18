@@ -54,6 +54,8 @@ Clanker is the home base repository for Raspberry Pi coding projects used in the
 
 - Assume Zero 2W nodes typically update code by pulling from GitHub in the relevant submodule rather than by full remote IDE workflows.
 - Prefer deployment suggestions that fit a `git pull` style update path for lightweight nodes unless the user asks for something more elaborate.
+- Treat Clanker-owned service submodules as deployable on fresh devices. Required OS configuration, package installs, drivers, kernel interfaces, systemd setup, env files, and manual provisioning steps must be documented in that service submodule's README.
+- Do not leave critical bring-up knowledge only in chat replies or root-level docs when it is required to make a service run on a new device.
 - Keep secrets, credentials, tokens, and device-specific sensitive configuration out of GitHub.
 - When secrets or machine-local settings are required, direct them into ignored env files, secure provisioning steps, or documented manual setup.
 
@@ -69,3 +71,4 @@ Clanker is the home base repository for Raspberry Pi coding projects used in the
 
 - Treat hardware assumptions, node role, deployment target, and update path as first-class documentation concerns.
 - When creating scripts, services, or docs, include enough context that a future operator can tell where the code belongs in the Clanker fleet.
+- For each Clanker-owned service submodule, the service README should be sufficient for first-time provisioning on a clean target device, including required drivers, OS-level toggles, service installation, validation commands, and any hardware-specific setup that is necessary before the service can run.
