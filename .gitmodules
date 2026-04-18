@@ -43,3 +43,6 @@
 [submodule "references/pico2W_lcd1.3"]
 	path = references/pico2W_lcd1.3
 	url = https://github.com/gregm123456/pico2W_lcd1.3
+[submodule "services/Clanker_clipboard"]
+	path = services/Clanker_clipboard
+	url = https://github.com/gregm123456/Clanker_clipboard.git
