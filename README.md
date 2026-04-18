@@ -13,3 +13,18 @@ This repo is a coordination root for Raspberry Pi node projects and related subm
 ## Status
 
 Starter repository initialized.
+
+## Copilot Custom Agents
+
+Workspace-level custom agents are defined in `.github/agents/` for reference repository workflows:
+
+- `reference-scan`: read-only scanning of external/reference repos and submodules.
+- `reference-submodule-intake`: adds or updates reference repos as submodules (prefer `references/`) without editing reference repo code.
+
+These agents are intended to enforce least privilege and keep reference repositories as read-only inputs.
+
+## Copilot Skills
+
+Workspace-level skills are defined in `.github/skills/`.
+
+- `reference-submodule-workflow`: reusable playbook for adding, syncing, auditing, and documenting reference submodules while preserving read-only boundaries for reference code.
