@@ -31,3 +31,15 @@
 [submodule "references/axcl-samples"]
 	path = references/axcl-samples
 	url = https://github.com/gregm123456/axcl-samples
+[submodule "references/AtomS3R-CAM"]
+	path = references/AtomS3R-CAM
+	url = https://github.com/gregm123456/AtomS3R-CAM
+[submodule "references/person_clicker"]
+	path = references/person_clicker
+	url = https://github.com/gregm123456/person_clicker
+[submodule "references/automatic1111_pico_passthrough"]
+	path = references/automatic1111_pico_passthrough
+	url = https://github.com/gregm123456/automatic1111_pico_passthrough
+[submodule "references/pico2W_lcd1.3"]
+	path = references/pico2W_lcd1.3
+	url = https://github.com/gregm123456/pico2W_lcd1.3
