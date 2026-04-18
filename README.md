@@ -28,3 +28,7 @@ These agents are intended to enforce least privilege and keep reference reposito
 Workspace-level skills are defined in `.github/skills/`.
 
 - `reference-submodule-workflow`: reusable playbook for adding, syncing, auditing, and documenting reference submodules while preserving read-only boundaries for reference code.
+
+## Reference Submodules
+
+Reference-repository scope docs live in `references/README.md`, including import intent, what to consult first, and the read-only boundary for all reference code.
