@@ -68,6 +68,26 @@ git submodule status --recursive
 git config --file .gitmodules --get-regexp '^submodule\..*\.(path|url)$'
 ```
 
+Handle nested submodule LFS failures safely:
+
+```bash
+# Avoid downloading LFS payloads during reference-only intake.
+GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --recursive
+
+# If a specific nested path still fails with missing LFS objects,
+# keep only that nested path deinitialized.
+git -C references/<parent> submodule deinit -f -- <nested/path>
+
+# Verify clean state in parent and root repo.
+git -C references/<parent> status --short
+git status --short
+```
+
+Notes:
+
+- Missing LFS objects in upstream reference repos are an external data issue, not a Clanker source-code edit.
+- Prefer leaving problematic nested paths deinitialized over forcing local edits in reference repos.
+
 ## Documentation Template
 
 Use this snippet in a Clanker-owned doc or README section.

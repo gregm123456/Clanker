@@ -8,6 +8,16 @@ Treat everything under `references/` as read-only input.
 Do not edit code in these reference working trees during normal Clanker development.
 Implement Clanker-specific adaptations in Clanker-owned repositories or submodules.
 
+## Operator Notes
+
+- Some nested reference submodules may contain Git LFS pointers whose objects are not available upstream.
+- If recursive initialization fails with LFS 404 errors, continue with a partial reference checkout and keep affected nested submodules deinitialized.
+- Safe initialization pattern:
+	- `GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --recursive`
+	- If specific nested submodules stay dirty due to LFS smudge failures, deinitialize only those paths:
+		- `git -C references/<parent> submodule deinit -f -- <nested/path>`
+- This does not change Clanker-owned source code; it only controls local checkout state for reference inputs.
+
 ## Imported References (April 2026)
 
 ### references/hardware_exercises
