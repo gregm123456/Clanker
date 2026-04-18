@@ -74,3 +74,23 @@ Implement Clanker-specific adaptations in Clanker-owned repositories or submodul
 
 - Why imported: AXCL sample applications for platform capabilities and expected usage.
 - Consult first: sample app entrypoints, API usage patterns, and build/run instructions.
+
+### references/AtomS3R-CAM
+
+- Why imported: ESP32-S3 camera-device reference for embedded capture/control patterns.
+- Consult first: firmware entrypoints, camera initialization/configuration, and board-specific pin/peripheral setup.
+
+### references/person_clicker
+
+- Why imported: embedded interaction/input workflow reference (device-side clicker/control behavior).
+- Consult first: event/input handling logic, button/control mapping, and transport/messaging interface code.
+
+### references/automatic1111_pico_passthrough
+
+- Why imported: supporting service passthrough reference for Pico-class device integration with image-generation backends.
+- Consult first: request/response bridge code, endpoint mapping/configuration, and device-to-service protocol assumptions.
+
+### references/pico2W_lcd1.3
+
+- Why imported: RP2040 Pico 2 W + LCD 1.3 embedded display/control reference.
+- Consult first: display driver setup, render/update loop code, and Pico 2 W hardware interface configuration.
